@@ -10,6 +10,7 @@ import (
 func main() {
 	config.LoadEnv()
 	config.LoggerConfig()
+	config.ConnectDB()
 
 	logger := config.GetLogger()
 

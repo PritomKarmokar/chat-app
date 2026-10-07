@@ -53,6 +53,16 @@ func ConnectDB() {
 	if err != nil {
 		zerologLogger.Fatal().Err(err).Msg("Failed to connect to the database.")
 	}
+
+	sqlDB, err := db.DB()
+	if err != nil {
+		zerologLogger.Fatal().Err(err).Msg("Failed to get the database connection.")
+	}
+
+	if err := sqlDB.Ping(); err != nil {
+		zerologLogger.Fatal().Err(err).Msg("Failed to ping the database.")
+	}
+
 	zerologLogger.Info().Msg("DB connection established successfully.")
 }
 
