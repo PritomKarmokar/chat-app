@@ -1,11 +1,8 @@
 package config
 
-import (
-	"github.com/spf13/viper"
-)
+import "github.com/spf13/viper"
 
 func LoadEnv() {
-
 	logger := GetLogger()
 
 	viper.AddConfigPath(".")
@@ -14,8 +11,8 @@ func LoadEnv() {
 
 	if err := viper.ReadInConfig(); err != nil {
 		viper.AutomaticEnv()
-		logger.Info().Err(err).Msg("Failed to load config file. ENV loaded from AutomaticEnv()")
+		logger.Info().Err(err).Msg("Failed to load config file. Env Loaded from AutomaticEnv()")
 	} else {
-		logger.Info().Msg("ENV loaded from .env")
+		logger.Info().Msg("Env Loaded from .env file")
 	}
 }
